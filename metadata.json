@@ -1,0 +1,6 @@
+{
+  "name": "Team Tasks",
+  "description": "A responsive team task management system for tracking, filtering, sorting, and triaging team work.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
