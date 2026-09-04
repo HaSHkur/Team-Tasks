@@ -176,7 +176,7 @@ export const TasksPage: React.FC = () => {
   };
 
   return (
-    <div className="min-h-screen bg-[#F9FAFB] text-[#111827] font-sans flex overflow-x-hidden">
+    <div className="h-screen bg-[#F9FAFB] text-[#111827] font-sans flex overflow-hidden">
       {/* High Density Dark Sidebar */}
       <AppSidebar
         isOpenMobile={isMobileNavOpen}
@@ -184,9 +184,9 @@ export const TasksPage: React.FC = () => {
       />
 
       {/* Main Column */}
-      <div className="flex-1 flex flex-col min-w-0 min-h-screen">
+      <div className="flex-1 flex flex-col min-w-0 h-screen overflow-hidden">
         {/* Top Header */}
-        <header className="h-16 bg-white border-b border-gray-200 flex items-center justify-between px-4 sm:px-6 sticky top-0 z-30">
+        <header className="h-16 flex-shrink-0 bg-white border-b border-gray-200 flex items-center justify-between px-4 sm:px-6 sticky top-0 z-30">
           <div className="flex items-center space-x-3 flex-1 min-w-0 mr-3">
             {/* Mobile Menu Toggle Button */}
             <button
@@ -263,7 +263,7 @@ export const TasksPage: React.FC = () => {
         </header>
 
         {/* Main Content Area */}
-        <main className="p-4 sm:p-6 space-y-5 flex-1 flex flex-col max-w-7xl w-full mx-auto">
+        <main className="p-4 sm:p-6 space-y-5 flex-1 flex flex-col max-w-7xl w-full mx-auto overflow-y-auto min-h-0">
           {/* Summary Stats */}
           {isLoading && tasks.length === 0 ? (
             <SummarySkeleton />
