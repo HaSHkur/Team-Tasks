@@ -13,6 +13,7 @@ export interface TeamMember {
   name: string;
   role?: string;
   avatarInitials?: string;
+  appRole?: "admin" | "user";
 }
 
 export interface Task {

@@ -7,18 +7,22 @@ import {
   BarChart3,
   X,
 } from "lucide-react";
+import { getTeamMember } from "../../data/users";
 
 interface Props {
   isOpenMobile?: boolean;
   onCloseMobile?: () => void;
+  loggedInUserId?: string;
 }
 
 export const AppSidebar: React.FC<Props> = ({
   isOpenMobile = false,
   onCloseMobile,
+  loggedInUserId = "usr_4",
 }) => {
   const location = useLocation();
   const isDashboardActive = location.pathname.startsWith("/tasks");
+  const currentUser = getTeamMember(loggedInUserId);
 
   const sidebarContent = (
     <aside className="w-[220px] bg-[#1F2937] text-white flex flex-col h-full flex-shrink-0 select-none">
@@ -102,11 +106,13 @@ export const AppSidebar: React.FC<Props> = ({
             className="w-8 h-8 rounded-full bg-orange-400 flex items-center justify-center text-white text-xs font-bold flex-shrink-0"
             aria-hidden="true"
           >
-            SA
+            {currentUser?.avatarInitials}
           </div>
           <div className="flex-1 min-w-0">
-            <p className="text-sm font-medium text-gray-100 truncate">Sarah Ahmed</p>
-            <p className="text-xs text-gray-400">Admin</p>
+            <p className="text-sm font-medium text-gray-100 truncate">
+              {currentUser?.name}
+            </p>
+            <p className="text-xs text-gray-400">{currentUser?.role}</p>
           </div>
         </div>
       </div>
