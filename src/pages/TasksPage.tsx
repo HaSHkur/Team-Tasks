@@ -257,7 +257,7 @@ export const TasksPage: React.FC = () => {
               className="bg-blue-600 hover:bg-blue-700 text-white px-4 py-1.5 rounded-md text-sm font-medium transition-colors shadow-sm whitespace-nowrap"
             >
               <Plus className="w-4 h-4 mr-1" aria-hidden="true" />
-              <span>+ New task</span>
+              <span>New task</span>
             </Button>
           </div>
         </header>

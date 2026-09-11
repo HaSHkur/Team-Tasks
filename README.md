@@ -7,6 +7,7 @@ A focused, accessible, and high-performance task management frontend designed fo
 ## 1. Project Overview
 
 Team Tasks provides engineering and product teams with an immediate, density-optimized dashboard to triage, track, and execute work. The application prioritizes:
+
 - **Instant visibility**: Overdue tasks, unassigned tickets, and in-progress work are immediately highlighted.
 - **URL-as-State**: Every filter, search term, sort parameter, and pagination offset lives in the URL, enabling 1:1 view sharing, browser bookmarking, and history traversal.
 - **Adaptive Ergonomics**: A dense 5-column table on desktop (1280px+), balanced medium layout on tablet (768px), and dedicated mobile card interfaces at 375px with zero horizontal scrolling.
@@ -75,6 +76,7 @@ export interface Task {
 ```
 
 ### Deterministic Dataset
+
 - **200 generated tasks** using a deterministic pseudo-random number generator (Mulberry32).
 - Edge cases included:
   - Very short titles (`Fix typo`, `API 500`, `SSL renewal`)
@@ -119,6 +121,7 @@ export interface Task {
 ## 8. What Was Intentionally NOT Built + Why
 
 In accordance with Section 3:
+
 - **Authentication & RBAC**: Excluded to focus purely on user-facing UI quality and responsiveness.
 - **Drag-and-Drop Kanban**: Column boards introduce severe horizontal layout friction on 375px screens and degrade keyboard accessibility.
 - **Complex Backend / Real-time WebSockets**: Client-side seeded store with simulated latency accurately verifies loading skeletons and error/retry states without backend infrastructure overhead.
@@ -129,29 +132,30 @@ In accordance with Section 3:
 ## 9. 2–3 Uncertain Decisions + Alternatives
 
 1. **Search Debounce Interval (250ms vs. Form Submit)**:
-   - *Decision*: 250ms debounce into URL query parameters.
-   - *Alternative*: An explicit search button. 
-   - *Trade-off*: Debouncing creates natural "live filtering" as the user types, but triggers intermediate history pushes if not replacing URL entries. We used search param replacement to keep history clean.
+   - _Decision_: 250ms debounce into URL query parameters.
+   - _Alternative_: An explicit search button.
+   - _Trade-off_: Debouncing creates natural "live filtering" as the user types, but triggers intermediate history pushes if not replacing URL entries. We used search param replacement to keep history clean.
 2. **Missing Due Date Sorting Position**:
-   - *Decision*: Placed tasks with `No due date` at the end of the list consistently regardless of ascending or descending direction.
-   - *Alternative*: Placing nulls first on descending.
-   - *Trade-off*: Consistent end placement matches standard issue trackers (Jira, Linear) where unscheduled work does not obscure urgent scheduled dates.
+   - _Decision_: Placed tasks with `No due date` at the end of the list consistently regardless of ascending or descending direction.
+   - _Alternative_: Placing nulls first on descending.
+   - _Trade-off_: Consistent end placement matches standard issue trackers (Jira, Linear) where unscheduled work does not obscure urgent scheduled dates.
 3. **Table Row Click vs. Dedicated View Button**:
-   - *Decision*: Entire row/card is clickable and keyboard accessible (Enter key navigation), with `e.stopPropagation()` on the status select.
-   - *Alternative*: Explicit "View" link column.
-   - *Trade-off*: Whole-row clicking maximizes speed on desktop and touch usability on mobile.
+   - _Decision_: Entire row/card is clickable and keyboard accessible (Enter key navigation), with `e.stopPropagation()` on the status select.
+   - _Alternative_: Explicit "View" link column.
+   - _Trade-off_: Whole-row clicking maximizes speed on desktop and touch usability on mobile.
 
 ---
 
 ## 10. AI Tooling Used
 
-Developed in Google AI Studio using the Antigravity engineering workflow and Gemini 2.5/3 models for code generation, architecture planning, and verification.
+Developed using ChatGPT Codex and Gemini 2./3 model for architecture planning, structure generation, UI Styling and verification.
 
 ---
 
 ## 11. Responsive Breakpoint Layout Verification
 
 ### 375px (Mobile Portrait)
+
 - Header: Compact with brand and `+ New task` button.
 - Summary: 2x2 grid cards with clear typography.
 - Controls: Search input + `[ Filters (N) ]` sheet trigger.
@@ -160,12 +164,14 @@ Developed in Google AI Studio using the Antigravity engineering workflow and Gem
 - Layout: 0px horizontal overflow.
 
 ### 768px (Tablet)
+
 - Header: Full brand + workspace pill + action button.
 - Summary: 4 horizontal stat cards.
 - Controls: Inline search with desktop filter dropdowns.
 - Content: Compact table with readable columns.
 
 ### 1280px (Desktop Wide)
+
 - Header: Spacious 7xl container alignment.
 - Summary: High-contrast density cards.
 - Controls: Full search bar, status, assignee, priority, due date, sort selector, and direction toggle.
